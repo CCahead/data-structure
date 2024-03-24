@@ -10,3 +10,5 @@ int main(){
     }
     printf("factorial:%d\n",factorial);
 }
+
+
