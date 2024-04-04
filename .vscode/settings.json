@@ -31,6 +31,7 @@
         "functional": "cpp",
         "tuple": "cpp",
         "variant": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "vector": "cpp"
     }
 }

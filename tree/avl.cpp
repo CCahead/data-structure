@@ -38,6 +38,35 @@ class AVL{
         
         return height(node->left)-height(node->right);
     }
+    /* 右旋操作 */
+TreeNode *rightRotate(TreeNode *node) {
+    TreeNode *child = node->left;
+    TreeNode *grandChild = child->right;     //     N
+    // 以 child 为原点，将 node 向右旋转             C
+    child->right = node;                     //     Grand   
+    node->left = grandChild;                     //
+    // 更新节点高度
+    updateHeight(node);
+    updateHeight(child);
+    // 返回旋转后子树的根节点
+    return child;
+}
+TreeNode* leftRotate(TreeNode* node){
+    TreeNode* child = node->right;
+    TreeNode* grandChild = child->left; 
+    child->left = node;
+    node->right = grandChild;
+    updateHeight(node);
+    updateHeight(child);
+}
+// always fulfill with this law: L<Root<R 
+// Thus, after rotation, the law still be fulfilled.
+//  when doing left rotation: it means the imbalance node should do rotate to left.
+// a               b
+//   b          a     c
+// bl     c       bl
+// before: it has a<b<c; after rotation, it's still fulfilled.
+// a<b and its subtree: a<bl<b<c => after rotating: a<bl<b<c
 };
 
 bool AVL::insert(int val){
